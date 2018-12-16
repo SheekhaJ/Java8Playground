@@ -18,6 +18,9 @@ public class SortExampleLambdaExpression {
 		//Usage 2
 		Collections.sort(names, (a, b) -> a.compareTo(b));
 		
+		/*Note: If the right side of the -> is enclosed in {} then the return type is void or whatever is explicitly mentioned. 
+		 * If not then the return type is inferred from evaluation of the expression.*/
+		
 		System.out.println("Sorted list: "+names);
 	}
 	
