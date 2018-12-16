@@ -15,14 +15,17 @@ public class ConverterImpl {
 		});
 		
 		converter1.convert("434");
-		converter1.convert("4324.3213");
+		//converter1.convert("4324.3213");
 
 		ConverterImpl converter2 = new ConverterImpl();
 		converter2.printConvertedValue(converter1);
-		
+
 		/*Alternatively you can also pass the entire lambda expression to the printConvertedValue() method.
 		 * This is called behavior parameterization i.e. passing of behavior as parameter. */ 
-
+		
+		//Alternate way of using the same lambda expression.
+		ConverterFI converter3 = System.out::println;
+		converter3.convert("76534");
 	}
 	
 }
