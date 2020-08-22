@@ -13,20 +13,32 @@ interface Drawable2{
 }
 
 interface Drawable3{
-    public Boolean isDrawable(int width, int height);
+    public boolean isDrawable(int width, int height);
 }
 
 public class LambdaExpressionExamples {
     public static void main(String[] args){
         implementationWithoutLambdaExpression();
+        printSeparator();
 
         implementationWithLambdaExpressionNoParameter();
+        printSeparator();
 
         implementationWithLambdaExpressionSingleParameter();
+        printSeparator();
 
         implementationWithLambdaExpressionMultipleParameters();
+        printSeparator();
 
         implementationWithLambdaExpressionWithReturn();
+        printSeparator();
+
+        implementationWithLambdaExpressionWithoutReturn();
+        printSeparator();
+    }
+
+    public static void printSeparator(){
+        System.out.println("----------------------------------------------------------------------------------");
     }
 
     // Without Lambda Expression
@@ -78,6 +90,17 @@ public class LambdaExpressionExamples {
 
         int width1 = 40, height1 = 10;
         System.out.println(String.format("implementationWithLambdaExpressionWithReturn - width0 - %d height0 - %d isDrawable? - %b",width1 ,height1 ,drawable.isDrawable(width1, height1)));
+    }
+
+    public static void implementationWithLambdaExpressionWithoutReturn(){
+        // Note that in this case when we don't specify the return statement, instead of curly braces {} we use round braces () and the return type is inferred from the method signature.
+        Drawable3 drawable = (width, height) -> (width*height>0);
+        
+        int width0 = -40, height0 = 10;
+        System.out.println(String.format("implementationWithLambdaExpressionWithoutReturn - width0 - %d height0 - %d isDrawable? - %b",width0 ,height0 ,drawable.isDrawable(width0, height0)));
+
+        int width1 = 40, height1 = 10;
+        System.out.println(String.format("implementationWithLambdaExpressionWithoutReturn - width0 - %d height0 - %d isDrawable? - %b",width1 ,height1 ,drawable.isDrawable(width1, height1)));
     }
 
 }
