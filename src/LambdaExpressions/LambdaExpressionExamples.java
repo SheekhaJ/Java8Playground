@@ -12,6 +12,10 @@ interface Drawable2{
     public void draw(int width, int height);
 }
 
+interface Drawable3{
+    public Boolean isDrawable(int width, int height);
+}
+
 public class LambdaExpressionExamples {
     public static void main(String[] args){
         implementationWithoutLambdaExpression();
@@ -21,6 +25,8 @@ public class LambdaExpressionExamples {
         implementationWithLambdaExpressionSingleParameter();
 
         implementationWithLambdaExpressionMultipleParameters();
+
+        implementationWithLambdaExpressionWithReturn();
     }
 
     // Without Lambda Expression
@@ -61,4 +67,17 @@ public class LambdaExpressionExamples {
         };
         drawable.draw(30, 35);
     }
+
+    public static void implementationWithLambdaExpressionWithReturn(){
+        Drawable3 drawable = (width, height) -> {
+            return width*height>0;
+        };
+        
+        int width0 = -40, height0 = 10;
+        System.out.println(String.format("implementationWithLambdaExpressionWithReturn - width0 - %d height0 - %d isDrawable? - %b",width0 ,height0 ,drawable.isDrawable(width0, height0)));
+
+        int width1 = 40, height1 = 10;
+        System.out.println(String.format("implementationWithLambdaExpressionWithReturn - width0 - %d height0 - %d isDrawable? - %b",width1 ,height1 ,drawable.isDrawable(width1, height1)));
+    }
+
 }
