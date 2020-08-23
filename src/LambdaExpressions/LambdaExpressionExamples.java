@@ -1,5 +1,8 @@
 package LambdaExpressions;
 
+import java.util.Arrays;
+import java.util.List;
+
 interface Drawable0{
     public void draw();
 }
@@ -35,6 +38,8 @@ public class LambdaExpressionExamples {
 
         implementationWithLambdaExpressionWithoutReturn();
         printSeparator();
+
+        forEachExample();
     }
 
     public static void printSeparator(){
@@ -101,6 +106,14 @@ public class LambdaExpressionExamples {
 
         int width1 = 40, height1 = 10;
         System.out.println(String.format("implementationWithLambdaExpressionWithoutReturn - width0 - %d height0 - %d isDrawable? - %b",width1 ,height1 ,drawable.isDrawable(width1, height1)));
+    }
+
+    public static void forEachExample(){
+        List<String> fruitsList = Arrays.asList("Banana", "Mango", "Pear", "Apple", "Pineapple");
+
+        fruitsList.forEach((fruit) -> {
+            System.out.println("Printing fruit name - "+fruit);
+        });
     }
 
 }
