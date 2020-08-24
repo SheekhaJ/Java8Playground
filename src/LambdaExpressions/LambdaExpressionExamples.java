@@ -40,6 +40,10 @@ public class LambdaExpressionExamples {
         printSeparator();
 
         forEachExample();
+        printSeparator();
+
+        threadExample();
+        printSeparator();
     }
 
     public static void printSeparator(){
@@ -114,6 +118,26 @@ public class LambdaExpressionExamples {
         fruitsList.forEach((fruit) -> {
             System.out.println("Printing fruit name - "+fruit);
         });
+    }
+
+    public static void threadExample(){
+        System.out.println("0 Printing statement - Thread1!");
+
+        Thread thread1 = new Thread(new Runnable(){
+            public void run(){
+                System.out.println("Thread 1 is running!");
+            }
+        });
+        thread1.start();
+        System.out.println("1 Printing statement - Thread1!");
+        
+        System.out.println("2 Printing statement - Thread1!");
+        // Type is inferred from the type expected in the constructor of Thread
+        Thread thread2 = new Thread(()->{
+            System.out.println("Thread 2 is running!");
+        });
+        thread2.start();
+        System.out.println("3 Printing statement - Thread1!");
     }
 
 }
