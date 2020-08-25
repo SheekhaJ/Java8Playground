@@ -1,6 +1,8 @@
 package LambdaExpressions;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 interface Drawable0{
@@ -17,6 +19,19 @@ interface Drawable2{
 
 interface Drawable3{
     public boolean isDrawable(int width, int height);
+}
+
+class Product{
+    int id;
+    String name;
+    float price;
+
+    public Product(int id, String name, float price){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
 }
 
 public class LambdaExpressionExamples {
@@ -43,6 +58,9 @@ public class LambdaExpressionExamples {
         printSeparator();
 
         threadExample();
+        printSeparator();
+
+        comparatorExample();
         printSeparator();
     }
 
@@ -138,6 +156,34 @@ public class LambdaExpressionExamples {
         });
         thread2.start();
         System.out.println("3 Printing statement - Thread1!");
+    }
+
+    public static void comparatorExample(){
+        List<Product> products1 = Arrays.asList(new Product(1,"Laptop",1500), new Product(2,"Phone",800), new Product(3,"TV",4000));
+        
+        System.out.println("Sorting based on price without lambda expression!");
+        Collections.sort(products1, new Comparator<Product>(){
+
+			@Override
+			public int compare(Product o1, Product o2) {
+				return (int) (o1.price - o2.price);
+			}
+            
+        });
+
+        for(Product p : products1){
+            System.out.println("Product p - "+p.id+" "+p.name+" "+p.price);
+        }
+
+        List<Product> products2 = Arrays.asList(new Product(1,"Laptop",1500), new Product(2,"Phone",800), new Product(3,"TV",4000));
+        System.out.println("Sorting based on price with lambda expression!");
+        Collections.sort(products2, (p1,p2)->{
+            return (int)(p1.price - p2.price);
+        });
+
+        for(Product p : products2){
+            System.out.println("Product p - "+p.id+" "+p.name+" "+p.price);
+        }
     }
 
 }
